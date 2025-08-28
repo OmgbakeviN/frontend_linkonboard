@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: "https://linkonboard.pythonanywhere.com/api",
   headers: { "Content-Type": "application/json" },
 });
 
@@ -26,7 +26,7 @@ api.interceptors.response.use(
             const refresh = localStorage.getItem("refresh");
             if (!refresh) throw new Error("no refresh");
             const r = await axios.post(
-              ("http://127.0.0.1:8000/api") + "/token/refresh/",
+              ("https://linkonboard.pythonanywhere.com/api") + "/token/refresh/",
               { refresh }
             );
             localStorage.setItem("access", r.data.access);

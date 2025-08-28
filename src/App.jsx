@@ -1,3 +1,6 @@
+// on mets notre css
+import "./App.css"
+
 export default function App() {
   return (
     <div style={{ padding: 24 }}>
