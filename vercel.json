@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/:token",
-            "destination": "/:token"
+            "source": "/(.*)",
+            "destination": "/"
         }
     ]
 }
