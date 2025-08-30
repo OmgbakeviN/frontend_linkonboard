@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 import { 
   EyeIcon, 
   EyeSlashIcon, 
@@ -13,6 +14,7 @@ export default function LoginPage() {
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -25,8 +27,12 @@ export default function LoginPage() {
       localStorage.setItem("refresh", res.data.refresh);
       localStorage.setItem("role", res.data.role);
       
-      // Redirection basée sur le rôle
-      window.location.href = res.data.role === "admin" ? "/dashboard" : "/wall";
+      // Redirection basée sur le rôle si dans le localstorage role est admin ou client
+      if (localStorage.getItem("role") === "MEMBER") {
+        navigate("/wall");
+      } else if (localStorage.getItem("role") === "CLIENT") {
+        navigate("/dashboard");
+      }
     } catch (e) {
       setErr("Identifiants incorrects. Veuillez réessayer.");
     } finally {
