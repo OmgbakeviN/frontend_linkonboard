@@ -16,7 +16,7 @@ import ClientDashboard from './pages/ClientDashboard.jsx'
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> }, //tout le monde
-  { path: '/token/:token', element: <InviteFormPage /> }, //tout le monde
+  { path: '/:token', element: <InviteFormPage /> }, //tout le monde
   { path: '/waiting/:token', element: <WaitingPage /> }, //tout le monde
   { path: '/dashboard', element: <ProtectedRoute allow="CLIENT"><ClientDashboard /></ProtectedRoute> }, //client
   { path: '/demands', element: <ProtectedRoute allow="CLIENT"><ClientDemands /></ProtectedRoute> }, //client
